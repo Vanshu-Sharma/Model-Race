@@ -18,8 +18,8 @@ Random state: 42 (reproducible)
 | Model | Accuracy | Precision | Recall | F1 | Cost (USD) | Time/review (ms) |
 |---|---|---|---|---|---|---|
 | Scikit-learn (TF-IDF + LR) | 1.0000 | 1.0000 | 1.0000 | 1.0000 | $0.000000 | 0.00 |
-| Cloud LLM – gemini/gemini-3.1-flash-lite | 1.0000 | 1.0000 | 1.0000 | 1.0000 | $0.000461 | 8407.23 |
-| Ollama (tinyllama) | N/A | N/A | N/A | N/A | N/A | N/A |
+| Cloud LLM – gemini/gemini-3.1-flash-lite | 1.0000 | 1.0000 | 1.0000 | 1.0000 | $0.000461 | 0.00 |
+| Ollama (gemma3:1b) | 1.0000 | 1.0000 | 1.0000 | 1.0000 | $0.000000 | 1501.73 |
 
 ## Notes & Assumptions
 
@@ -47,7 +47,8 @@ Random state: 42 (reproducible)
 
 ### Model comparison
 - **Scikit-learn (TF-IDF + LR):** Accuracy=1.0000, F1=1.0000, Cost/100 reviews=$0.000000, Avg=0.00 ms/review
-- **Cloud LLM – gemini/gemini-3.1-flash-lite:** Accuracy=1.0000, F1=1.0000, Cost/100 reviews=$0.000461, Avg=8407.23 ms/review
+- **Cloud LLM – gemini/gemini-3.1-flash-lite:** Accuracy=1.0000, F1=1.0000, Cost/100 reviews=$0.000461, Avg=0.00 ms/review
+- **Ollama (gemma3:1b):** Accuracy=1.0000, F1=1.0000, Cost/100 reviews=$0.000000, Avg=1501.73 ms/review
 
 ### Shipping recommendation
 
@@ -63,10 +64,5 @@ Random state: 42 (reproducible)
 ## Per-model notes
 
 - **Scikit-learn (TF-IDF + LR):** No API cost. Inference time is batch-averaged.
-- **Cloud LLM – gemini/gemini-3.1-flash-lite:** Provider: gemini. 1/100 from cache. Unknown fallback: 0.
-- **Ollama (tinyllama):** Skipped: Ollama not available. Ollama is not running. To install and start:
-  Windows  : Download from https://ollama.com/download/windows
-  macOS    : brew install ollama && ollama serve
-  Linux    : curl -fsSL https://ollama.com/install.sh | sh && ollama serve
-  Then pull model: ollama pull tinyllama
-Set OLLAMA_HOST if running on a non-default port.
+- **Cloud LLM – gemini/gemini-3.1-flash-lite:** Provider: gemini. 100/100 from cache. Unknown fallback: 0.
+- **Ollama (gemma3:1b):** Local inference. 1/100 from cache. Unknown fallback: 0.
